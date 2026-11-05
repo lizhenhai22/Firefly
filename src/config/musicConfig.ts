@@ -18,7 +18,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	playMode: "list",
 
 	// 是否显启用歌词
-	showLyrics: false,
+	showLyrics: true,
 
 	// Meting API 配置
 	meting: {
@@ -48,11 +48,18 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
-				name: "使一颗心免于哀伤",
-				artist: "知更鸟 / HOYO-MiX / Chevy",
-				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
-				cover: "/assets/music/cover/109951169585655912.webp",
-				lrc: "",
+				name: "春娇与志明",
+				artist: "街道办GDC / 欧阳耀莹",
+				url: "/assets/music/chunjiao-yu-zhiming.mp3",
+				cover: "/assets/music/cover/chunjiao-yu-zhiming.webp",
+				lrc: "/assets/music/lrc/chunjiao-yu-zhiming.lrc",
+			},
+			{
+				name: "迷途羔羊",
+				artist: "张震岳 / 大渊(顽童MJ116)",
+				url: "/assets/music/mitu-gaoyang.mp3",
+				cover: "/assets/music/cover/mitu-gaoyang.webp",
+				lrc: "/assets/music/lrc/mitu-gaoyang.lrc",
 			},
 		],
 	},
