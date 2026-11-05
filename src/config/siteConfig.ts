@@ -48,7 +48,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "记录技术与生活",
 
 	// 站点 URL（部署到 Cloudflare 后可改为你的 xxx.pages.dev 或自定义域名）
-	site_url: "https://firefly-blog.pages.dev",
+	site_url: "https://zhenhai-blog.pages.dev",
 
 	// 站点描述
 	description:
