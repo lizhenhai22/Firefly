@@ -1,25 +1,18 @@
 import type { MusicPlayerConfig } from "../types/musicConfig";
-
 // 音乐播放器配置
 export const musicPlayerConfig: MusicPlayerConfig = {
 	// 是否在导航栏显示音乐播放器入口
 	showInNavbar: true,
-
 	// 是否在侧边栏显示音乐播放器组件
 	showInSidebar: true,
-
 	// 使用方式："meting" 使用 Meting API，"local" 使用本地音乐列表
 	mode: "local",
-
 	// 默认音量 (0-1)
 	volume: 0.7,
-
 	// 播放模式：'list'=列表循环, 'one'=单曲循环, 'random'=随机播放
 	playMode: "list",
-
 	// 是否显启用歌词
 	showLyrics: true,
-
 	// Meting API 配置
 	meting: {
 		// Meting API 地址
@@ -39,7 +32,6 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 			"https://api.moeyao.cn/meting/?server=:server&type=:type&id=:id",
 		],
 	},
-
 	// 本地音乐配置（当 mode 为 'local' 时使用）
 	// 1. 支持传入歌词文件的路径
 	// lrc: "/assets/music/lrc/使一颗心免于哀伤-哼唱.lrc",
@@ -60,6 +52,22 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				url: "/assets/music/mitu-gaoyang.mp3",
 				cover: "/assets/music/cover/mitu-gaoyang.webp",
 				lrc: "/assets/music/lrc/mitu-gaoyang.lrc",
+			},
+			// 新增第一首：我的天空
+			{
+				name: "我的天空",
+				artist: "南征北战NZBZ",
+				url: "/assets/music/wo-de-tian-kong.mp3",
+				cover: "/assets/music/cover/wo-de-tian-kong.webp",
+				lrc: "/assets/music/lrc/wo-de-tian-kong.lrc",
+			},
+			// 新增第二首：How Do You Love Somebody
+			{
+				name: "How Do You Love Somebody",
+				artist: "Why Don't We",
+				url: "/assets/music/how-do-you-love-somebody.mp3",
+				cover: "/assets/music/cover/how-do-you-love-somebody.webp",
+				lrc: "/assets/music/lrc/how-do-you-love-somebody.lrc",
 			},
 		],
 	},
