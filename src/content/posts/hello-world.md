@@ -2,7 +2,7 @@
 title: 我的第一篇博客
 published: 2026-11-05
 description: 欢迎来到 Zhenhai Li 的个人博客！这是使用 Astro 与 Firefly 主题搭建并部署在 Cloudflare 上的第一篇文章。
-image: ''
+image: ./images/cover-hello.jpg
 tags: [随笔, 博客]
 category: 随笔
 pinned: true

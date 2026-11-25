@@ -1,7 +1,5 @@
 {
   "src:assets/images/avatar.avif": "dcd8d5d1cecabea9a9",
-  "public:gallery/firefly-2026/cover.avif": "7588a28a8f989e8d88",
-  "public:gallery/firefly-2026/1.avif": "c8bca9dde6d2babfb5",
   "src:content/posts/guide/cover.avif": "c8bca9dde6d2babfb5",
   "src:content/posts/images/vitepress.avif": "3d3d43e1e1e7ebe0da",
   "src:content/posts/images/right-grid2.avif": "cbcdcddddcd9d8d7db",
@@ -36,5 +34,17 @@
   "public:assets/images/ad/ad1.webp": "a1b8b68a8e918c8f93",
   "src:content/projects/images/firefly.avif": "b5b0b3bcb6bbe0e0df",
   "src:assets/images/DesktopWallpaper/my-banner.jpg": "7e878d515258355c76",
-  "src:assets/images/MobileWallpaper/my-banner.jpg": "7e878d515258355c76"
+  "src:assets/images/MobileWallpaper/my-banner.jpg": "7e878d515258355c76",
+  "src:assets/images/avatar-editorial.jpg": "cccdd3c9cacfc6c9ce",
+  "public:gallery/firefly-2026/cover.jpg": "4c8ebb8b9da39b998a",
+  "public:gallery/firefly-2026/04-spatial.jpg": "e2dfd9d3ccc3bdb3a7",
+  "public:gallery/firefly-2026/03-monoliths.jpg": "181c200d12150e1319",
+  "public:gallery/firefly-2026/02-glass-titanium.jpg": "ced5ddb9c0c9b2bbc5",
+  "public:gallery/firefly-2026/01-workspace.jpg": "bcbebb989a97b7bcbf",
+  "src:content/projects/images/firefly-editorial.jpg": "ced5ddb9c0c9b2bbc5",
+  "src:content/posts/guide/cover-guide.jpg": "4c8ebb8b9da39b998a",
+  "src:content/posts/images/cover-layout.jpg": "e2dfd9d3ccc3bdb3a7",
+  "src:content/posts/images/cover-hello.jpg": "bcbebb989a97b7bcbf",
+  "src:content/posts/images/cover-design.jpg": "ced5ddb9c0c9b2bbc5",
+  "src:content/posts/images/cover-code.jpg": "181c200d12150e1319"
 }
