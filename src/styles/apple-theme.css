@@ -1,0 +1,896 @@
+/* ============================================================================
+ * Apple Keynote / Apple.com Editorial Design System (Yu Apple Style)
+ * 黑白交替官网节奏 · 极简克制排版 · 苹果蓝高亮 · 保留全部 Firefly 功能
+ * ============================================================================ */
+
+@reference "tailwindcss";
+
+/* ── 1. 全局字体渲染与排版基线 ──────────────────────────────────────────── */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  color: var(--deep-text);
+  background-color: var(--page-bg);
+  letter-spacing: -0.008em;
+}
+
+h1, h2, h3, h4, .post-card-title, .banner-title, .banner-page-title, .banner-post-title {
+  letter-spacing: -0.025em;
+}
+
+.tabular-nums,
+[data-stat-id],
+.pill-count,
+.tag-count-badge,
+.current-time,
+.total-time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 2. Apple 纯黑首屏舞台（Banner Hero Stage） ─────────────────────────── */
+/* 隐藏旧模板顶部白色渐变高光，保持纯黑舞台从 0px 起绝对纯粹 */
+.top-gradient-highlight {
+  display: none !important;
+}
+
+html[data-wallpaper-mode="banner"] #wallpaper-wrapper {
+  background: #000000 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 默认黑场舞台：隐藏原始杂乱背景图，保留干净纯黑苹果发布会质感；
+   若用户点击导航栏播放视频按钮（data-bg-video-playing），视频依然正常呈现 */
+html[data-wallpaper-mode="banner"] #wallpaper-wrapper #banner-images-container {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* 纯黑舞台顶部微弱的苹果蓝环境光晕与金属高光线 */
+html[data-wallpaper-mode="banner"] #wallpaper-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 68% 58% at 50% -6%, rgba(0, 113, 227, 0.24) 0%, rgba(41, 151, 255, 0.08) 44%, transparent 74%),
+    radial-gradient(ellipse 46% 36% at 86% 18%, rgba(255, 255, 255, 0.06) 0%, transparent 65%);
+}
+
+html[data-wallpaper-mode="banner"] #wallpaper-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0%, transparent 32%, rgba(0, 0, 0, 0.45) 100%) !important;
+}
+
+/* 当背景视频正在播放时，适当降低遮罩让视频显现 */
+html[data-wallpaper-mode="banner"][data-bg-video-playing] #wallpaper-wrapper .banner-dim-overlay {
+  background: rgba(0, 0, 0, 0.52) !important;
+}
+
+/* 顶部非首页标题：苹果 Keynote 纯净大标题 */
+.banner-page-title {
+  font-size: clamp(2.1rem, 4.2vw, 3.25rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.035em !important;
+  text-shadow: none !important;
+  color: #f5f5f7 !important;
+}
+
+.banner-post-title {
+  font-size: clamp(1.85rem, 3.6vw, 2.85rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+  text-shadow: none !important;
+  color: #f5f5f7 !important;
+}
+
+.banner-post-meta-list {
+  text-shadow: none !important;
+  color: #a1a1a6 !important;
+  font-size: 0.9rem !important;
+}
+
+.banner-post-description {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(12px);
+  text-shadow: none !important;
+  color: #d2d2d7 !important;
+}
+
+/* ── 3. 首页纯黑 Hero 文案与苹果胶囊 CTA ────────────────────────────────── */
+.apple-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 auto 1.15rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #a1a1a6;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.apple-hero-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 9999px;
+  background: #2997ff;
+  box-shadow: 0 0 10px rgba(41, 151, 255, 0.85);
+}
+
+.banner-home-text-overlay .banner-title {
+  text-shadow: none !important;
+  letter-spacing: -0.04em !important;
+  font-weight: 700 !important;
+  line-height: 1.06 !important;
+  color: #f5f5f7 !important;
+  font-size: clamp(2.4rem, 5.8vw, 4.65rem) !important;
+}
+
+.apple-hero-title-accent {
+  background: linear-gradient(135deg, #2997ff 0%, #64b5ff 55%, #a8d4ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.banner-home-text-overlay .banner-subtitle {
+  text-shadow: none !important;
+  color: #a1a1a6 !important;
+  font-size: clamp(1rem, 1.8vw, 1.3rem) !important;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-top: 0.35rem;
+}
+
+.apple-hero-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 2.6rem;
+  padding: 0 1.35rem;
+  border-radius: 9999px;
+  background: #0071e3;
+  color: #ffffff !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.apple-hero-cta-primary:hover {
+  background: #0077ed;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 113, 227, 0.38);
+}
+
+.apple-hero-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 2.6rem;
+  padding: 0 1.25rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f5f5f7 !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(12px);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.apple-hero-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.banner-home-text-overlay .banner-link {
+  width: 2.6rem !important;
+  height: 2.6rem !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #e5e5ea !important;
+}
+
+.banner-home-text-overlay .banner-link:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+.banner-home-text-overlay .banner-link-text {
+  width: auto !important;
+  padding: 0 1.05rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500;
+}
+
+/* ── 4. Apple 官网级毛玻璃全宽导航栏 ────────────────────────────────────── */
+#navbar > div {
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: rgba(251, 251, 253, 0.86) !important;
+  --navbar-surface-blur: 20px !important;
+  transition: background-color 0.16s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.16s ease, box-shadow 0.16s ease !important;
+}
+
+#navbar .btn-plain,
+#navbar a > div,
+#navbar .dropdown-trigger,
+#navbar #search-bar,
+#navbar #search-bar input,
+#navbar #search-bar svg {
+  transition: color 0.16s ease, background-color 0.16s ease, border-color 0.16s ease !important;
+}
+
+#navbar > div::before {
+  backdrop-filter: saturate(180%) blur(var(--navbar-surface-blur, 20px)) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(var(--navbar-surface-blur, 20px)) !important;
+}
+
+:root.dark #navbar > div {
+  background: rgba(18, 18, 20, 0.78) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+#navbar.navbar-sticky-shadow {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+:root.dark #navbar.navbar-sticky-shadow {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 在纯黑首屏舞台上方（未滚动离开首屏时）：导航栏自动切换为苹果深色毛玻璃 + 纯白文字 */
+@media (min-width: 1024px) {
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) > div {
+    background: rgba(10, 10, 12, 0.72) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    --navbar-surface-blur: 20px !important;
+    box-shadow: none !important;
+  }
+
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) .btn-plain,
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) a > div,
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) .dropdown-trigger {
+    color: rgba(245, 245, 247, 0.86) !important;
+  }
+
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) .btn-plain:hover,
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) .dropdown-trigger:hover {
+    color: #ffffff !important;
+  }
+
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) .btn-plain.scale-animation:hover::before,
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) .dropdown-trigger:hover::before {
+    background-color: rgba(255, 255, 255, 0.10) !important;
+  }
+
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) #search-bar {
+    background-color: rgba(255, 255, 255, 0.10) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) #search-bar input,
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) #search-bar input::placeholder,
+  html[data-wallpaper-mode="banner"] #navbar:not(.scrolled) #search-bar svg {
+    color: rgba(245, 245, 247, 0.72) !important;
+  }
+
+  /* 滚动离开黑场舞台后，亮色模式回归苹果经典白玻璃导航 */
+  html[data-wallpaper-mode="banner"]:not(.dark) #navbar.scrolled > div {
+    background: rgba(251, 251, 253, 0.84) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    --navbar-surface-blur: 20px !important;
+    box-shadow: none !important;
+  }
+
+  html[data-wallpaper-mode="banner"].dark #navbar.scrolled > div {
+    background: rgba(18, 18, 20, 0.80) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+    --navbar-surface-blur: 20px !important;
+    box-shadow: none !important;
+  }
+}
+
+/* 移动端首页在黑场舞台上方时同步深色毛玻璃导航 */
+@media (max-width: 1023px) {
+  html[data-wallpaper-mode="banner"] #navbar[data-is-home="true"]:not(.scrolled) > div {
+    background: rgba(10, 10, 12, 0.74) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    --navbar-surface-blur: 20px !important;
+  }
+
+  html[data-wallpaper-mode="banner"] #navbar[data-is-home="true"]:not(.scrolled) .btn-plain,
+  html[data-wallpaper-mode="banner"] #navbar[data-is-home="true"]:not(.scrolled) a > div {
+    color: #f5f5f7 !important;
+  }
+
+  html[data-wallpaper-mode="banner"]:not(.dark) #navbar[data-is-home="true"].scrolled > div {
+    background: rgba(251, 251, 253, 0.86) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  }
+}
+
+/* 导航项更克制的字号与间距 */
+#navbar .dropdown-trigger,
+#navbar .dropdown-container > a {
+  height: 2.15rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  border-radius: 9999px !important;
+}
+
+#navbar .dropdown-container .navbar-icon {
+  font-size: 0.98rem !important;
+  opacity: 0.75;
+}
+
+#navbar #search-bar {
+  height: 2.15rem !important;
+  border-radius: 9999px !important;
+}
+
+#navbar button.h-11.w-11 {
+  height: 2.15rem !important;
+  width: 2.15rem !important;
+  border-radius: 9999px !important;
+}
+
+/* 浮动下拉面板（避免继承黑场透明态文字色） */
+#navbar .dropdown-content,
+#navbar .float-panel {
+  border-radius: 1.125rem !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12) !important;
+  backdrop-filter: saturate(180%) blur(24px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(24px) !important;
+}
+
+:root.dark #navbar .dropdown-content,
+:root.dark #navbar .float-panel {
+  background: rgba(28, 28, 30, 0.90) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55) !important;
+}
+
+#navbar .dropdown-item {
+  font-size: 0.86rem !important;
+  color: #1d1d1f !important;
+  border-radius: 0.625rem !important;
+  margin-inline: 0.35rem;
+}
+
+:root.dark #navbar .dropdown-item {
+  color: #f5f5f7 !important;
+}
+
+#navbar .dropdown-item:hover {
+  color: var(--primary) !important;
+}
+
+/* 下拉面板定位适配 56px 导航栏 */
+#navbar .float-panel {
+  top: 4rem !important;
+}
+
+/* ── 5. Apple Bento 卡片系统（去除旧模板绿条与生硬圆角） ─────────────────── */
+.card-base {
+  border-radius: var(--radius-large) !important;
+  border: 1px solid var(--line-divider);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.025);
+  transition: background-color 0.2s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root.dark .card-base {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* 去掉 Firefly 默认的竖向彩色小装饰条，回归 Apple 极简纯排版 */
+.post-card-title::before,
+.widget-title::before {
+  display: none !important;
+  content: none !important;
+}
+
+.widget-title {
+  margin-left: 1.25rem !important;
+  margin-right: 1.25rem !important;
+  margin-top: 1.15rem !important;
+  margin-bottom: 0.65rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--content-meta) !important;
+  text-transform: uppercase;
+}
+
+/* ── 6. Apple 分类导航条（Segmented Pill 风格） ─────────────────────────── */
+#category-bar {
+  padding: 0.6rem 0.75rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+#category-bar .category-pill {
+  border-radius: 9999px !important;
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  color: #515154;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 0.4rem 0.9rem !important;
+}
+
+:root.dark #category-bar .category-pill {
+  color: #a1a1a6;
+}
+
+#category-bar .category-pill:hover {
+  color: #1d1d1f;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+:root.dark #category-bar .category-pill:hover {
+  color: #f5f5f7;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+#category-bar .category-pill[data-active] {
+  background: #1d1d1f !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+:root.dark #category-bar .category-pill[data-active] {
+  background: #f5f5f7 !important;
+  color: #1d1d1f !important;
+}
+
+#category-bar .category-pill[data-active] .pill-count {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  opacity: 1;
+}
+
+:root.dark #category-bar .category-pill[data-active] .pill-count {
+  background: rgba(0, 0, 0, 0.12);
+  color: #1d1d1f;
+}
+
+#category-bar .category-pill .pill-count {
+  background: rgba(0, 0, 0, 0.06);
+  color: inherit;
+  opacity: 0.75;
+}
+
+:root.dark #category-bar .category-pill .pill-count {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+/* ── 7. 文章卡片 Apple Newsroom 质感重构 ────────────────────────────────── */
+.post-card-wrapper {
+  border: 1px solid var(--line-divider) !important;
+}
+
+.post-card-wrapper:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 113, 227, 0.22) !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.065) !important;
+}
+
+:root.dark .post-card-wrapper:hover {
+  border-color: rgba(41, 151, 255, 0.34) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55) !important;
+}
+
+.post-card-wrapper .post-card-title {
+  font-weight: 650 !important;
+  letter-spacing: -0.025em !important;
+  color: #1d1d1f !important;
+}
+
+:root.dark .post-card-wrapper .post-card-title {
+  color: #f5f5f7 !important;
+}
+
+.post-card-wrapper .post-card-title:hover {
+  color: var(--primary) !important;
+}
+
+.post-card-wrapper .description {
+  color: #6e6e73 !important;
+  font-size: 0.935rem !important;
+  line-height: 1.65 !important;
+}
+
+:root.dark .post-card-wrapper .description {
+  color: #a1a1a6 !important;
+}
+
+/* 精简 PostMeta 图标块，去掉笨重底色方块 */
+.post-meta-root .meta-icon {
+  width: 1.35rem !important;
+  height: 1.35rem !important;
+  margin-right: 0.35rem !important;
+  background: transparent !important;
+  color: var(--content-meta) !important;
+}
+
+.post-meta-root .meta-icon svg {
+  font-size: 1rem !important;
+}
+
+.post-meta-root .pinned-btn {
+  border-radius: 9999px !important;
+  padding: 0.2rem 0.65rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  background: rgba(0, 113, 227, 0.10) !important;
+  color: var(--primary) !important;
+}
+
+:root.dark .post-meta-root .pinned-btn {
+  background: rgba(41, 151, 255, 0.16) !important;
+}
+
+.post-meta-root .pinned-btn svg {
+  font-size: 0.95rem !important;
+}
+
+/* 卡片右侧封面圆角更流畅 & 内容区均衡留白 */
+@media (min-width: 768px) {
+  .list-mode .has-cover .post-card-content {
+    padding: 1.5rem 1rem 1.5rem 1.75rem !important;
+  }
+
+  .list-mode .no-cover .post-card-content {
+    padding: 1.5rem 1.25rem 1.5rem 1.75rem !important;
+  }
+}
+
+.post-card-wrapper .post-card-image {
+  border-radius: 0.95rem !important;
+}
+
+/* 兼容文章页与内页的按钮、分页、归档卡片圆角 */
+.btn-card {
+  border: 1px solid var(--line-divider);
+  border-radius: 0.95rem;
+}
+
+.btn-card:hover {
+  border-color: rgba(0, 113, 227, 0.25);
+}
+
+.post-card-wrapper .post-card-enter-btn {
+  border-radius: 0.95rem !important;
+  border: 1px solid var(--line-divider);
+}
+
+/* ── 8. 侧边栏组件 Apple Bento 细节精修 ─────────────────────────────────── */
+.music-player-widget .btn-play {
+  background: #1d1d1f !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+}
+
+.music-player-widget .btn-play:hover {
+  background: var(--primary) !important;
+  transform: scale(1.04);
+}
+
+:root.dark .music-player-widget .btn-play {
+  background: #f5f5f7 !important;
+  color: #1d1d1f !important;
+}
+
+:root.dark .music-player-widget .btn-play:hover {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+/* ── 9. 文章详情页 Apple Editorial 排版 ─────────────────────────────────── */
+#post-container {
+  padding: 2rem 1.75rem 2.25rem !important;
+}
+
+@media (min-width: 768px) {
+  #post-container {
+    padding: 2.75rem 3rem 3rem !important;
+  }
+}
+
+.custom-md {
+  color: #1d1d1f;
+  line-height: 1.82;
+}
+
+:root.dark .custom-md {
+  color: #e5e5ea;
+}
+
+.custom-md h1,
+.custom-md h2,
+.custom-md h3 {
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.custom-md blockquote {
+  background: #f5f5f7;
+  border-radius: 0.875rem;
+  padding: 0.9rem 1.25rem;
+}
+
+:root.dark .custom-md blockquote {
+  background: #1c1c1e;
+}
+
+.custom-md blockquote::before {
+  left: 0 !important;
+  width: 3px !important;
+  background: var(--primary) !important;
+}
+
+.custom-md img {
+  border-radius: 1rem;
+}
+
+/* ── 10. Apple 官网页脚风格 ─────────────────────────────────────────────── */
+.site-footer > div:first-child {
+  border-style: solid !important;
+  border-color: var(--line-divider) !important;
+  margin-inline: 0 !important;
+}
+
+/* ── 11. 首页黑白交替叙事模块（AppleNarrativeSection） ───────────────────── */
+.apple-narrative-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.apple-overview-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-large);
+  background: var(--card-bg);
+  border: 1px solid var(--line-divider);
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.025);
+}
+
+@media (min-width: 768px) {
+  .apple-overview-card {
+    padding: 2rem 2.25rem;
+  }
+}
+
+.apple-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #86868b;
+  margin-bottom: 0.5rem;
+}
+
+.apple-section-title {
+  font-size: clamp(1.35rem, 2.3vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.22;
+  color: #1d1d1f;
+}
+
+:root.dark .apple-section-title {
+  color: #f5f5f7;
+}
+
+.apple-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line-divider);
+}
+
+@media (max-width: 540px) {
+  .apple-kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.apple-kpi-value {
+  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #1d1d1f;
+  font-variant-numeric: tabular-nums;
+}
+
+:root.dark .apple-kpi-value {
+  color: #f5f5f7;
+}
+
+.apple-kpi-unit {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-left: 0.2rem;
+}
+
+.apple-kpi-label {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: #86868b;
+}
+
+.apple-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.35rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line-divider);
+}
+
+@media (max-width: 640px) {
+  .apple-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.apple-pillar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.95rem;
+  background: #f5f5f7;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+:root.dark .apple-pillar-item {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.apple-pillar-item:hover {
+  background: rgba(0, 113, 227, 0.07);
+  transform: translateY(-1px);
+}
+
+:root.dark .apple-pillar-item:hover {
+  background: rgba(41, 151, 255, 0.12);
+}
+
+/* 黑场命题卡（始终纯黑 #000000，复刻 Yu Apple 黑白交替节奏 + 右下白色胶囊组件） */
+.apple-black-stage-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-large);
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
+}
+
+@media (min-width: 768px) {
+  .apple-black-stage-card {
+    padding: 2.35rem 2.5rem;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.apple-black-stage-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 80% at 88% 15%, rgba(41, 151, 255, 0.18) 0%, transparent 65%);
+}
+
+.apple-stage-premise {
+  color: #86868b;
+  font-size: clamp(0.95rem, 1.45vw, 1.12rem);
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 0.45rem;
+}
+
+.apple-stage-thesis {
+  color: #f5f5f7;
+  font-size: clamp(1.18rem, 1.75vw, 1.52rem);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.apple-stage-blue {
+  color: #2997ff;
+}
+
+/* 白色胶囊快捷组件（致敬参考图 Slide 04 黑场右下白色圆胶囊） */
+.apple-white-capsule {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #1d1d1f;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+@media (min-width: 768px) {
+  .apple-white-capsule {
+    align-self: flex-end;
+  }
+}
+
+.apple-capsule-action {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.18rem;
+  min-width: 3.9rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 9999px;
+  color: #1d1d1f;
+  font-size: 0.72rem;
+  font-weight: 600;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.apple-capsule-action:hover {
+  background: #f5f5f7;
+  color: #0071e3;
+  transform: translateY(-1px);
+}
+
+/* 最新文章分段标题 */
+.apple-feed-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.25rem 0.25rem 0.5rem;
+}

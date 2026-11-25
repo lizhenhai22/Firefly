@@ -34,5 +34,7 @@
   "public:assets/images/sponsor/wechat.png": "d5d5d5dad9d7dbd8cf",
   "public:assets/images/sponsor/alipay.png": "8ebbde91bedf93c0e0",
   "public:assets/images/ad/ad1.webp": "a1b8b68a8e918c8f93",
-  "src:content/projects/images/firefly.avif": "b5b0b3bcb6bbe0e0df"
+  "src:content/projects/images/firefly.avif": "b5b0b3bcb6bbe0e0df",
+  "src:assets/images/DesktopWallpaper/my-banner.jpg": "7e878d515258355c76",
+  "src:assets/images/MobileWallpaper/my-banner.jpg": "7e878d515258355c76"
 }

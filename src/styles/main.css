@@ -9,16 +9,19 @@
 @import './display-settings.css';
 @import './categories.css';
 @import './layout-base.css';
+@import './apple-theme.css';
 
 @plugin '@tailwindcss/typography';
 
 /* 暗色模式选择器配置 */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Tailwind v4 配置 - 从 tailwind.config.cjs 迁移 */
+/* Tailwind v4 配置 - Apple Keynote / Apple.com 字体栈 */
 @theme {
   --font-sans:
-    'Roboto', 'sans-serif', ui-sans-serif, system-ui, sans-serif,
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC',
+    ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 

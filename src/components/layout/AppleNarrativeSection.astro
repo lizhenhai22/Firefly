@@ -1,0 +1,147 @@
+---
+import { Icon } from "astro-icon/components";
+import {
+	getCategoryList,
+	getSortedPosts,
+	getTagList,
+} from "@/utils/content-utils";
+import { url } from "@/utils/url-utils";
+
+interface Props {
+	totalPosts: number;
+}
+
+const { totalPosts } = Astro.props;
+
+const [allPosts, categories, tags] = await Promise.all([
+	getSortedPosts(),
+	getCategoryList(),
+	getTagList(),
+]);
+
+let totalWords = 0;
+for (const post of allPosts) {
+	if (post.body) {
+		const text = post.body
+			.replace(/```[\s\S]*?```/g, "")
+			.replace(/`[^`]*`/g, "")
+			.replace(/\s+/g, " ")
+			.trim();
+		const chineseChars = text.match(/[\u4e00-\u9fa5]/g) || [];
+		const englishChars = text.match(/[a-zA-Z]/g) || [];
+		totalWords += chineseChars.length + englishChars.length;
+	}
+}
+
+const formattedWords =
+	totalWords >= 10000
+		? `${(totalWords / 10000).toFixed(1)}`
+		: totalWords.toLocaleString();
+const wordsUnit = totalWords >= 10000 ? "万字" : "字";
+---
+
+<section class="apple-narrative-stack onload-animation" aria-label="站点概览与写作主张">
+  <!-- 浅色指标与内容柱卡片（致敬 Apple Keynote 数字 + 三栏理念页） -->
+  <div class="apple-overview-card">
+    <div class="apple-eyebrow">OVERVIEW · 博客概览</div>
+    <h2 class="apple-section-title">
+      用代码与文字，<span class="text-(--primary)">记录持续演进的思考。</span>
+    </h2>
+
+    <div class="apple-kpi-grid">
+      <div>
+        <div class="apple-kpi-value">
+          {totalPosts}<span class="apple-kpi-unit">篇</span>
+        </div>
+        <div class="apple-kpi-label">已发布公开文章与指南</div>
+      </div>
+      <div>
+        <div class="apple-kpi-value">
+          {formattedWords}<span class="apple-kpi-unit">{wordsUnit}</span>
+        </div>
+        <div class="apple-kpi-label">持续沉淀的累计文字量</div>
+      </div>
+      <div>
+        <div class="apple-kpi-value">
+          {categories.length}<span class="apple-kpi-unit" style="margin-left: 0.3rem;">/ {tags.length}</span>
+        </div>
+        <div class="apple-kpi-label">内容分类与主题标签维度</div>
+      </div>
+    </div>
+
+    <div class="apple-pillars-grid">
+      <a href={url("/archive/")} class="apple-pillar-item group">
+        <Icon name="material-symbols:article-outline-rounded" class="text-[1.35rem] text-(--primary)" />
+        <div class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-(--primary) transition-colors">
+          文章归档
+        </div>
+        <div class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+          按时间脉络梳理技术笔记与随笔
+        </div>
+      </a>
+      <a href={url("/projects/")} class="apple-pillar-item group">
+        <Icon name="material-symbols:deployed-code-outline" class="text-[1.35rem] text-(--primary)" />
+        <div class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-(--primary) transition-colors">
+          项目实践
+        </div>
+        <div class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+          工程实验、作品展示与开源探索
+        </div>
+      </a>
+      <a href={url("/dynamic/")} class="apple-pillar-item group">
+        <Icon name="material-symbols:auto-awesome-outline-rounded" class="text-[1.35rem] text-(--primary)" />
+        <div class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-(--primary) transition-colors">
+          即时动态
+        </div>
+        <div class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+          日常灵感碎片、影像与生活记录
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 纯黑命题舞台卡（黑白交替叙事节奏 + 右下白色胶囊快捷入口） -->
+  <div class="apple-black-stage-card">
+    <div class="relative z-1 max-w-xl">
+      <div class="apple-eyebrow" style="color: #86868b;">PROPOSITION · 个人主张</div>
+      <div class="apple-stage-premise">
+        工具能做什么，决定了效率的下限。
+      </div>
+      <div class="apple-stage-thesis">
+        持续写作与实践，拓展着<span class="apple-stage-blue">思考的边界。</span>
+      </div>
+    </div>
+
+    <div class="apple-white-capsule" role="navigation" aria-label="快捷入口">
+      <a href={url("/archive/")} class="apple-capsule-action">
+        <Icon name="material-symbols:inventory-2-outline-rounded" class="text-[1.25rem]" />
+        <span>归档</span>
+      </a>
+      <a href={url("/gallery/")} class="apple-capsule-action">
+        <Icon name="material-symbols:photo-library-outline-rounded" class="text-[1.25rem]" />
+        <span>相册</span>
+      </a>
+      <a href={url("/friends/")} class="apple-capsule-action">
+        <Icon name="material-symbols:link-rounded" class="text-[1.25rem]" />
+        <span>友链</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 文章流分段标题 -->
+  <div class="apple-feed-header">
+    <div>
+      <div class="apple-eyebrow" style="margin-bottom: 0.15rem;">LATEST STORIES</div>
+      <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
+        最新文章
+      </h2>
+    </div>
+    <a
+      href={url("/archive/")}
+      class="inline-flex items-center gap-1 text-sm font-medium text-(--primary) hover:underline"
+    >
+      <span>查看全部 {totalPosts} 篇</span>
+      <Icon name="material-symbols:chevron-right-rounded" class="text-base" />
+    </a>
+  </div>
+</section>

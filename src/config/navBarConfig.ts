@@ -104,19 +104,19 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		// 子菜单
 		children: [
 			{
-				name: "GitHub",
-				url: "https://github.com/CuteLeaf/Firefly",
+				name: "Zhenhai GitHub",
+				url: "https://github.com/lizhenhai22",
 				external: true,
 				icon: "fa7-brands:github",
 			},
 			{
-				name: "Gitee",
-				url: "https://gitee.com/CuteLeaf/Firefly",
+				name: "博客源码",
+				url: "https://github.com/lizhenhai22/Firefly",
 				external: true,
-				icon: "fa7-brands:gitee",
+				icon: "material-symbols:code-rounded",
 			},
 			{
-				name: "Firefly文档",
+				name: "Firefly 文档",
 				url: "https://docs-firefly.cuteleaf.cn",
 				external: true,
 				icon: "material-symbols:docs",

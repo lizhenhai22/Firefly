@@ -24,9 +24,9 @@
 
 /* 移动端横幅优化 - 小屏手机 (320px - 480px) */
 @media (max-width: 480px) {
-    /* Banner wrapper 高度统一 65vh，让主内容区自然覆盖约 10% 横幅 */
+    /* Banner wrapper 高度与 --banner-height-home 保持一致 */
     #wallpaper-wrapper:not(.mobile-hide-banner) {
-        height: 65vh !important;
+        height: var(--banner-height-home) !important;
         top: 0 !important;
         transform: none !important;
     }
@@ -34,9 +34,8 @@
 
 /* 移动端横幅优化 - 大屏手机 (481px - 640px) */
 @media (min-width: 481px) and (max-width: 640px) {
-    /* Banner wrapper 高度统一 65vh，让主内容区自然覆盖约 10% 横幅 */
     #wallpaper-wrapper:not(.mobile-hide-banner) {
-        height: 65vh !important;
+        height: var(--banner-height-home) !important;
         top: 0 !important;
         transform: none !important;
     }
@@ -44,9 +43,8 @@
 
 /* 移动端横幅优化 - 超大屏手机/小平板 (641px - 767px) */
 @media (min-width: 641px) and (max-width: 767px) {
-    /* Banner wrapper 高度统一 65vh，让主内容区自然覆盖约 10% 横幅 */
     #wallpaper-wrapper:not(.mobile-hide-banner) {
-        height: 65vh !important;
+        height: var(--banner-height-home) !important;
         top: 0 !important;
         transform: none !important;
     }
@@ -54,9 +52,8 @@
 
 /* 平板设备横幅优化 (768px - 1023px) - Tailwind md 断点 */
 @media (min-width: 768px) and (max-width: 1023px) {
-    /* Banner wrapper 高度统一 65vh，让主内容区自然覆盖约 10% 横幅 */
     #wallpaper-wrapper:not(.mobile-hide-banner) {
-        height: 65vh !important;
+        height: var(--banner-height-home) !important;
         top: 0 !important;
         transform: none !important;
     }

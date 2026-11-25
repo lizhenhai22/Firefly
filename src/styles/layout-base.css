@@ -79,28 +79,30 @@
   }
 
   /* --content-top 由 html[data-wallpaper-mode] + body.is-home + 媒体查询解析（解析期生效，无 JS 内联 top） */
-  /* banner（桌面全页 + 移动首页）：内容在横幅下方，重叠 3.5rem */
+  /* Apple 官网黑白交替模式：内容区紧接纯黑首屏下方开始，留出清爽留白，不遮挡首屏交互 */
   html[data-wallpaper-mode="banner"] .content-panel {
-    --content-top: calc(var(--banner-height-home) - 3.5rem); /* = 65vh - 3.5rem */
+    --content-top: var(--banner-height-home);
+    padding-top: 2rem;
   }
   /* banner 移动端非首页：横幅隐藏，内容从导航栏下方开始 */
   @media (max-width: 1023px) {
     html[data-wallpaper-mode="banner"] body:not(.is-home) .content-panel {
-      --content-top: 5.5rem;
+      --content-top: 4.5rem;
+      padding-top: 0.5rem;
     }
   }
   /* overlay / none / fullscreen 非首页：内容从导航栏下方开始 */
   html[data-wallpaper-mode="overlay"] .content-panel,
   html[data-wallpaper-mode="none"] .content-panel,
   html[data-wallpaper-mode="fullscreen"] body:not(.is-home) .content-panel {
-    --content-top: 5.5rem;
+    --content-top: 4.5rem;
   }
   /* fullscreen 首页 hero：内容推到首屏之下 */
   html[data-wallpaper-mode="fullscreen"] body.is-home .content-panel {
     --content-top: 100vh;
   }
 
-  /* banner wrapper：统一顶到顶部、高 65vh（不再用 -30vh/translateY 抵消；短屏高度由 layout-styles 媒体查询覆盖） */
+  /* banner wrapper：Apple 纯黑首屏舞台，顶到顶部 */
   html[data-wallpaper-mode="banner"] #wallpaper-wrapper {
     position: absolute;
     top: 0;
@@ -118,16 +120,16 @@
     display: none !important;
   }
 
-  /* banner 桌面端非首页：整块横幅用 transform 上移 20vh（合成层动画，平滑、不触发壁纸每帧重排）。
-     与内容区 FLIP（同为 transform）同步；不用 height 过渡，避免大图重布局掉帧 */
+  /* banner 桌面端非首页：整块横幅用 transform 上移至非首页高度（合成层动画，丝滑） */
   @media (min-width: 1024px) {
     html[data-wallpaper-mode="banner"] body:not(.is-home) #wallpaper-wrapper {
       transform: translateY(calc(var(--banner-height-non-home) - var(--banner-height-home)));
     }
     html[data-wallpaper-mode="banner"] body:not(.is-home) .content-panel {
-      --content-top: calc(var(--banner-height-non-home) - 3.5rem);
+      --content-top: var(--banner-height-non-home);
+      padding-top: 2rem;
     }
-    /* 非首页标题反向平移：抵消 wrapper 一半的 -20vh，使标题落在缩短后 45vh 横幅的正中 */
+    /* 非首页标题反向平移：抵消 wrapper 一半的上移，使标题落在缩短后横幅的正中 */
     html[data-wallpaper-mode="banner"] body:not(.is-home) #banner-overlay-container .banner-home-text-overlay,
     html[data-wallpaper-mode="banner"] body:not(.is-home) #banner-overlay-container .banner-page-title-overlay,
     html[data-wallpaper-mode="banner"] body:not(.is-home) #banner-overlay-container .banner-post-meta-overlay {
@@ -168,10 +170,10 @@
 }
 
 @layer utilities {
-  /* 侧边栏 sticky：#main-grid transform 已删除，无需 --banner-height-extend 补偿；sticky-navbar 统一 5.5rem */
+  /* 侧边栏 sticky：适配 Apple 56px 导航栏 */
   body.sticky-navbar #left-sidebar-sticky,
   body.sticky-navbar #right-sidebar-sticky {
-    top: 5.5rem !important;
+    top: 4.5rem !important;
   }
 
   .navbar-hidden {
@@ -195,7 +197,7 @@
     left: 0 !important;
     right: 0 !important;
     z-index: 80 !important;
-    height: 4.5rem !important;
+    height: 3.5rem !important;
   }
 
   body.sticky-navbar #navbar-wrapper {
