@@ -30,7 +30,6 @@
   "src:assets/images/DesktopWallpaper/d2.avif": "e8f3e6b0bdb4f5e6de",
   "src:assets/images/DesktopWallpaper/d1.avif": "8b9bb59ba6bae7d7dd",
   "public:assets/images/sponsor/wechat.png": "d5d5d5dad9d7dbd8cf",
-  "public:assets/images/sponsor/alipay.png": "8ebbde91bedf93c0e0",
   "public:assets/images/ad/ad1.webp": "a1b8b68a8e918c8f93",
   "src:content/projects/images/firefly.avif": "b5b0b3bcb6bbe0e0df",
   "src:assets/images/DesktopWallpaper/my-banner.jpg": "7e878d515258355c76",
@@ -53,5 +52,6 @@
   "src:content/posts/images/iconglass/poster-03.png": "e0c7e1c3c0ded2dce9",
   "src:content/posts/images/iconglass/poster-02.png": "bbcae7c6dbd9e7eeee",
   "src:content/posts/images/iconglass/poster-01.png": "c0dbeecce3e5e6e6f1",
-  "src:content/posts/images/iconglass/cover.png": "ebf1f7eaf1f5dbdedd"
+  "src:content/posts/images/iconglass/cover.png": "ebf1f7eaf1f5dbdedd",
+  "public:assets/images/sponsor/alipay.jpg": "8fb0de8fb0dd6a93cb"
 }
