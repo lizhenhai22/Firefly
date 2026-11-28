@@ -38,7 +38,7 @@ slug: iconglass-desktop-manager
     poster="/assets/images/iconglass-poster.png"
     style="width: 100%; display: block; background: #0f172a;"
   >
-    <source src="/assets/videos/iconglass-promo.webm" type="video/webm" />
+    <source src="/assets/videos/iconglass-promo.mp4" type="video/mp4" />
     你的浏览器暂不支持 HTML5 视频播放，可查看下方的动态演示图。
   </video>
 </div>

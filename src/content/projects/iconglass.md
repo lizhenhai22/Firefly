@@ -40,7 +40,7 @@ link:
     poster="/assets/images/iconglass-poster.png"
     style="width: 100%; display: block; background: #0f172a;"
   >
-    <source src="/assets/videos/iconglass-promo.webm" type="video/webm" />
+    <source src="/assets/videos/iconglass-promo.mp4" type="video/mp4" />
   </video>
 </div>
 
