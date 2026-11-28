@@ -46,5 +46,12 @@
   "src:content/posts/images/cover-layout.jpg": "e2dfd9d3ccc3bdb3a7",
   "src:content/posts/images/cover-hello.jpg": "bcbebb989a97b7bcbf",
   "src:content/posts/images/cover-design.jpg": "ced5ddb9c0c9b2bbc5",
-  "src:content/posts/images/cover-code.jpg": "181c200d12150e1319"
+  "src:content/posts/images/cover-code.jpg": "181c200d12150e1319",
+  "public:assets/images/iconglass-poster.png": "ebf1f7eaf1f5dbdedd",
+  "src:content/projects/images/iconglass-preview.png": "ebf1f7eaf1f5dbdedd",
+  "src:content/posts/images/iconglass/poster-04.png": "2d536d3d476b28393e",
+  "src:content/posts/images/iconglass/poster-03.png": "e0c7e1c3c0ded2dce9",
+  "src:content/posts/images/iconglass/poster-02.png": "bbcae7c6dbd9e7eeee",
+  "src:content/posts/images/iconglass/poster-01.png": "c0dbeecce3e5e6e6f1",
+  "src:content/posts/images/iconglass/cover.png": "ebf1f7eaf1f5dbdedd"
 }
